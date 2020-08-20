@@ -1,7 +1,12 @@
+# Code adapted from Udacity Data Structures Course
+
 class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
+    
+    def __repr__(self):
+        return self.data
 
 class LinkedList:
     def __init__(self, head=None):
