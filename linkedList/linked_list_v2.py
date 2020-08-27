@@ -1,7 +1,4 @@
-class ListNode:
-    """
-    A node in a singly-linked list.
-    """
+class Node:
     def __init__(self, data=None, next=None):
         self.data = data
         self.next = next
@@ -35,7 +32,7 @@ class SinglyLinkedList:
         Insert a new element at the beginning of the list.
         Takes O(1) time.
         """
-        self.head = ListNode(data=data, next=self.head)
+        self.head = Node(data=data, next=self.head)
 
     def append(self, data):
         """
@@ -43,12 +40,12 @@ class SinglyLinkedList:
         Takes O(n) time.
         """
         if not self.head:
-            self.head = ListNode(data=data)
+            self.head = Node(data=data)
             return
         curr = self.head
         while curr.next:
             curr = curr.next
-        curr.next = ListNode(data=data)
+        curr.next = Node(data=data)
 
     def find(self, key):
         """
@@ -96,7 +93,10 @@ class SinglyLinkedList:
         self.head = prev_node
     
     def count(self):
-        """Counts the number of elements in the list."""
+        """
+        Counts the number of elements in the list.
+        Takes O(n) time.
+        """
         node = self.head
         count = 0
         while node:
