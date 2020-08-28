@@ -9,7 +9,7 @@ def test_all():
     # Test peek
     # Should be 1
     print q.peek()
-
+"""
     # Test dequeue
     # Should be 1
     print q.dequeue()
@@ -25,3 +25,4 @@ def test_all():
     q.enqueue(5)
     # Should be 5
     print q.peek()
+"""
