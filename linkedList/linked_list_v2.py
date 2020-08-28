@@ -104,10 +104,16 @@ class SinglyLinkedList:
             node = node.next
         return count
     
-    def middleNode(self, head):
-    fast = slow = head
-    while fast and fast.next:
-      fast = fast.next.next
-      slow = slow.next
-    
-    return slow
+    def middle(self):
+        """
+        Finds the middle element of the list.
+        If two, it uses the second. 
+        Takes O(n) time. 
+        N = number of nodes
+        Takes O(1) space
+        """
+        fast = slow = self.head
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+        return slow
