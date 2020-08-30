@@ -123,7 +123,7 @@ class SinglyLinkedList:
             slow = slow.next
         return slow
 
-    def pop(self):
+    def popfirst(self):
         temp = self.head
         if self.head == None:
             return
@@ -159,12 +159,24 @@ class SinglyLinkedList:
         # Unlink the node from linked list 
         temp.next = None
         temp.next = next 
-   
-        
+    
+    def get(self,index):
+        curr = self.head
+        count = 0
+        while count < index:
+            count += 1
+            curr = curr.next
+        return curr.data
+
+
+            
+
+
 
 ll = SinglyLinkedList()
 ll.append('Here')
 ll.append('is')
 ll.append('some')
 ll.append('test')
+ll.append('text')
 
