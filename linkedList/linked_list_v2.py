@@ -14,6 +14,8 @@ class SinglyLinkedList:
         Takes O(1) time.
         """
         self.head = None
+        self.tail = None
+        self.index = 0
 
     def __repr__(self):
         """
@@ -39,13 +41,16 @@ class SinglyLinkedList:
         Insert a new element at the end of the list.
         Takes O(n) time.
         """
-        if not self.head:
-            self.head = Node(data=data)
-            return
-        curr = self.head
-        while curr.next:
-            curr = curr.next
-        curr.next = Node(data=data)
+
+        node = Node(data=data)
+        if self.index == 0:
+            self.head = node
+        else:
+            self.tail.next= node
+        self.tail = node
+        self.index += 1
+            
+        
 
     def find(self, key):
         """
@@ -117,3 +122,49 @@ class SinglyLinkedList:
             fast = fast.next.next
             slow = slow.next
         return slow
+
+    def pop(self):
+        temp = self.head
+        if self.head == None:
+            return
+        else: 
+            self.head = temp.next
+            temp = None
+            return
+    
+    def deleteNode(self, position): 
+        # If linked list is empty 
+        if self.head == None: 
+            return 
+        # Store head node 
+        temp = self.head 
+        # If head needs to be removed 
+        if position == 0: 
+            self.head = temp.next
+            temp = None
+            return 
+        # Find previous node of the node to be deleted 
+        for i in range(position -1 ): 
+            temp = temp.next
+            if temp is None: 
+                break
+        # If position is more than number of nodes 
+        if temp is None: 
+            return 
+        if temp.next is None: 
+            return 
+        # Node temp.next is the node to be deleted 
+        # store pointer to the next of node to be deleted 
+        next = temp.next.next
+        # Unlink the node from linked list 
+        temp.next = None
+        temp.next = next 
+   
+        
+
+ll = SinglyLinkedList()
+ll.append('Here')
+ll.append('is')
+ll.append('some')
+ll.append('test')
+
