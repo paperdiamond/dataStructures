@@ -41,12 +41,11 @@ class SinglyLinkedList:
         Insert a new element at the end of the list.
         Takes O(n) time.
         """
-
         node = Node(data=data)
         if self.index == 0:
             self.head = node
         else:
-            self.tail.next= node
+            self.tail.next = node
         self.tail = node
         self.index += 1
             
@@ -167,16 +166,47 @@ class SinglyLinkedList:
             count += 1
             curr = curr.next
         return curr.data
+    
+    def empty(self):
+        pass
 
+    def last(self):
+        pass
 
+    def split(self,type):
+        node = self.head
+        # global llnum
+        llnum = SinglyLinkedList()
+        llstr = SinglyLinkedList()
+        while node:
+            if isinstance(node.data, int) == True:
+                llnum.append(node.data)
+            elif isinstance(node.data, str) == True:
+                llstr.append(node.data)
+            node = node.next
+        if type == int:
+            return llnum
+        if type == str:
+            return llstr
+        else:
+            return "Does not compute"
+        
             
+
+        
 
 
 
 ll = SinglyLinkedList()
 ll.append('Here')
+ll.prepend(1231290)
 ll.append('is')
 ll.append('some')
 ll.append('test')
 ll.append('text')
+ll.append(123128987)
+# llnum = SinglyLinkedList()
+# llstr = SinglyLinkedList()
+# ll.split()
+
 
