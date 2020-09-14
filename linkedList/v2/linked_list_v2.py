@@ -6,7 +6,28 @@ class Node:
     def __repr__(self):
         return repr(self.data)
 
+# class LinkedListIterator:
+#     def __init__(self,head):
+#         self.current = head
 
+#     def __next__(self):
+#         if self.current == None:
+#             raise StopIteration
+#         else:
+#             data = self.current.data
+#             self.current = self.current.next
+#             return data
+
+class myIterator:
+    def __init__(self, head):
+        self.head = head
+    def __next__(self):
+        if self.head == None:
+            raise StopIteration
+        else:
+            data = self.head.data
+            self.head = self.head.next
+            return data
 class SinglyLinkedList:
     def __init__(self):
         """
@@ -28,6 +49,18 @@ class SinglyLinkedList:
             nodes.append(repr(curr))
             curr = curr.next
         return '[' + ', '.join(nodes) + ']'
+    
+    def __iter__(self): # To be discussed in Section 18.3
+        return myIterator(self.head) 
+    
+
+    # def __iter__(self):
+    #     node = self.head
+    #     result = []
+    #     while node:
+    #         result.append(node.data)
+    #         node = node.next
+    #     return result
 
     def prepend(self, data):
         """
@@ -39,7 +72,7 @@ class SinglyLinkedList:
     def append(self, data):
         """
         Insert a new element at the end of the list.
-        Takes O(n) time.
+        Takes O(1) time.
         """
         node = Node(data=data)
         if self.index == 0:
@@ -175,7 +208,6 @@ class SinglyLinkedList:
 
     def split(self,type):
         node = self.head
-        # global llnum
         llnum = SinglyLinkedList()
         llstr = SinglyLinkedList()
         while node:
@@ -190,6 +222,11 @@ class SinglyLinkedList:
             return llstr
         else:
             return "Does not compute"
+
+    
+
+
+
         
             
 
